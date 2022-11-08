@@ -1,0 +1,16 @@
+<h2>Your medication</h2>
+<script  type="module" src="./main.js"></script>
+<form id="new_medicine_form">
+    <label for="name">Medicine name: </label>
+    <input type="text" id="name" name="name">
+    <label for="quantity" id="quantity" name="quantity">Quantity: </label>
+    <input type="number" id="quantity" name="quantity" min="0">
+    <label for="dose">Dose Unit: </label>
+    <select name="dose" id="dose">
+      <option value="mg">milligram /mg</option> 
+      <option value="ml">milliliter /ml</option>
+      <option value="drops">Drops</option>
+      <option value="inhalation">Inhalation</option>
+    </select> 
+    <button type=button"  id="new_medicine_form_button">Add</button>
+</form>

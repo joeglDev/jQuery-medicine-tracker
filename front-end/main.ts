@@ -1,8 +1,15 @@
-//import $ from 'jquery';
+//load in html components
+$(() => {
+  $("#included__header").load("./components/header.html");
+});
 
-$(function(){
-    $("#included__header").load("./components/header.html"); 
-  });
+$(() => {
+  $("#included__medicines__list").load("./components/medicines_list.html");
+});
 
-
-// this helps TypeScript to understand jQuery best !!!  otherwise It will confused .
+//medicines__list code
+$(document).on('click','#new_medicine_form_button',function(e){
+    e.preventDefault();
+    console.log("hi")
+   // alert("button");
+});
