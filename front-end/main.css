@@ -1,5 +1,5 @@
-html, body
-{
+html,
+body {
     margin: 0;
     padding: 0;
     text-align: center;
@@ -8,7 +8,7 @@ html, body
 /* header */
 
 .header {
-    background-color:rgb(71, 117, 242);
+    background-color: rgb(71, 117, 242);
     color: white;
     margin: 0;
     padding: 0.5rem;
@@ -20,6 +20,45 @@ html, body
 
 /* Medicines table */
 
+.new__medicines {
+    background-color: rgb(84, 45, 225);
+    color: white;
+    margin-top: 1rem;
+    padding: 0.5rem;
+}
+
+.new__medicines label {
+    font-weight: bold;
+}
+
+.new__medicines table {
+    margin: auto;
+    margin-top: 1rem;
+    border-spacing: 0;
+}
+
+.new__medicines table th {
+    width: 10%;
+}
+
+.new__medicines table td {
+    padding: 0;
+}
+
+.medicines__table__row :hover {
+    background-color: rgb(71, 117, 242);
+}
+
+#new_medicine_form {
+    display: flex;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+
+
 @media only screen and (max-width: 600px) {
-    
+    #new_medicine_form {
+        flex-direction: column;
+    }
 }

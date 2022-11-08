@@ -8,16 +8,19 @@ $(() => {
 });
 
 //medicines__list code
+let count = 0;
 $(document).on("click", "#new_medicine_form_button", (e) => {
   e.preventDefault();
   //get new values
   const newMedicine = $("#name").val();
   const newQuantity = $("#quantity").val();
   const newDose = $("#dose").val();
-  //add new values to table
 
-  // $("#table__row__name").html(`${newMedicine}`);
+  //generate unique row ids
+  count++;
+  let row__id = `${count}__table__row`
+
   $("#current__medicines__table > tbody:first").append(
-    `<tr><td>${newMedicine}</td><td>${newQuantity}</td><td>${newDose}</td></tr>`
+    `<tr class="medicines__table__row" id=${row__id} ><td>${newMedicine}</td><td>${newQuantity}</td><td>${newDose}</td></tr>`
   );
 });
