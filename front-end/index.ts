@@ -1,3 +1,5 @@
+//import * as cron from "node-cron";
+//import * as cron from "node-cron";
 //load in html components
 $(() => {
   $("#included__header").load("./components/header.html");
@@ -82,15 +84,18 @@ let alertCount = 0;
 $(document).on("click", "#medication__alerts__form__button", (e) => {
   e.preventDefault();
   const alertMedication = $("#medication_selector").val();
-  const alertTime = $("#alert__time__input").val();
+  let alertTime = $("#alert__time__input").val();
   const alertRepeats = $("#alert__repeats__selector").val();
 
   //alert in arr
-  const alertArrObj = {medication: alertMedication, time: alertTime, repeats: alertRepeats};
+  const alertArrObj = {
+    medication: alertMedication,
+    time: alertTime,
+    repeats: alertRepeats,
+  };
   alertArr.push(alertArrObj);
   //active alerts in table
 
- 
   //generate unique row ids
   alertCount++;
 
@@ -98,5 +103,34 @@ $(document).on("click", "#medication__alerts__form__button", (e) => {
     `<tr class="medicines__table__row" id="${count}__table__row" ><td>${alertMedication}</td><td>${alertTime}</td><td>${alertRepeats}</td><td><button id="${alertCount}__alerts__delete__btn" class="delete__btn">Remove</button></td></tr>`
   );
 
-   //alert on time
+  //create new cron job
+  //sec min hour day month *dayweek1-7
+  let minutes;
+  let dailyRepeat;
+  let scheduleString = '* * * * * *'.split(" ");
+  if (alertTime && alertRepeats) {
+    alertTime = alertTime.toString()
+     minutes   = alertTime[0] + alertTime[3];
+    if (alertRepeats === "Daily") {
+      dailyRepeat = "0-7";
+    } else {
+      dailyRepeat = "*";
+    }
+    scheduleString[1] = minutes;
+    scheduleString[5] = dailyRepeat;
+    const scheduleStringRefactored = scheduleString.join(" ");
+    console.log(scheduleStringRefactored)
+
+    //new cron
+    /*
+    cron.schedule(scheduleStringRefactored, () => {
+      alert(`Alert- It is time to take ${alertMedication}.`);
+    }); 
+    */
+  }
+  
+  
+  
+
+  
 });
