@@ -15,14 +15,14 @@ $(() => {
 
 //note this need fixing to accept only valid types
 interface medicationArr {
-  newMedicine : string | number |undefined | string[];
-  newQuantity : string | number |undefined | string[];
-  newDose : string | number |undefined | string[];
-};
+  newMedicine: string | number | undefined | string[];
+  newQuantity: string | number | undefined | string[];
+  newDose: string | number | undefined | string[];
+}
 
-interface medicationsData extends Array<medicationArr>{}
+interface medicationsData extends Array<medicationArr> {}
 
-const medicationArr : medicationArr[] = [];
+const medicationArr: medicationArr[] = [];
 let count = 0;
 
 //add new table row
@@ -34,8 +34,12 @@ $(document).on("click", "#new_medicine_form_button", (e) => {
   const newDose = $("#dose").val();
 
   //pipulate array
-  medicationArr.push({newMedicine : newMedicine, newQuantity: newQuantity, newDose : newDose})
-console.log(medicationArr)
+  medicationArr.push({
+    newMedicine: newMedicine,
+    newQuantity: newQuantity,
+    newDose: newDose,
+  });
+  console.log(medicationArr);
   //generate unique row ids
   count++;
 
@@ -50,5 +54,10 @@ $(document).on("click", "[id*=__delete__btn]", function () {
   const rowID = $(this).parent().parent().attr("id");
   if (rowID) {
     $(`#${rowID}`).remove();
+
+    //remove from medicationArr
+    const indexToRemove = [...rowID.matchAll(/\d/g)].join("");
+    const numberIndexToRemove = parseInt(indexToRemove) - 1;
+    medicationArr.splice(numberIndexToRemove, 1);
   }
 });
