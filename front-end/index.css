@@ -45,10 +45,6 @@ body {
     padding: 0;
 }
 
-.medicines__table__row :hover {
-    background-color: rgb(71, 117, 242);
-}
-
 #new_medicine_form {
     display: flex;
     margin-left: 20%;
@@ -61,4 +57,43 @@ body {
     #new_medicine_form {
         flex-direction: column;
     }
+}
+
+/* Alerts */
+
+.medicines__alerts {
+    background-color: rgb(150, 45, 225);
+    color: white;
+    margin-top: 1rem;
+    padding: 0.5rem;
+}
+
+#medication__alerts__form {
+    display: flex;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+#medication__alerts__form label {
+    font-weight: bold;
+}
+
+.medicines__alerts table {
+    margin: auto;
+    margin-top: 1rem;
+    border-spacing: 0;
+}
+
+.medicines__alerts table th {
+    width: 10%;
+}
+
+.medicines__alerts table td {
+    padding: 0;
+}
+
+@media only screen and (max-width: 600px) {
+#medication__alerts__form {
+    flex-direction: column;
+}
 }

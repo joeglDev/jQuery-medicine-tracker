@@ -1,0 +1,22 @@
+<h2>Your medication alerts</h2>
+<form id="medication__alerts__form">
+    <label for="medication_selector">Medication</label>
+    <select name="medication_selector" id="medication_selector">
+    </select>
+    <label name="alert__time" id="alert__time">Time of alert: </label>
+    <input type="time" id="alert__time__input" name="alert__time__input">
+    <label for="alert__repeats">Repeats? </label>
+    <select name="alert__repeats" id="alert__repeats__selector">
+        <option value="none">Do not repeat</option>
+        <option value="Daily">Daily</option>
+    </select>
+    <button type=button" id="medication__alerts__form__button">Add</button>
+</form>
+<table id="medicines__alert__table">
+    <tr>
+        <th>Name</th>
+        <th>Time</th>
+        <th>Repeats</th>
+        <th>Remove</th>
+    </tr>
+</table>
