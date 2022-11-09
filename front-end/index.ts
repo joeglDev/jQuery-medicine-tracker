@@ -42,7 +42,8 @@ $(document).on("click", "#new_medicine_form_button", (e) => {
 
   //add new result to alert selector
   const selectorValue = `${newMedicine} /${newQuantity} ${newDose}`;
-  $("#medication_selector").append(`<option id="${selectorValue}" value="${selectorValue}">${selectorValue}</option>`)
+  const optionID = `${newMedicine}${newQuantity}${newDose}`
+  $("#medication_selector").append(`<option id="${optionID}" value="${selectorValue}">${selectorValue}</option>`)
   
 
   //generate unique row ids
@@ -63,10 +64,14 @@ $(document).on("click", "[id*=__delete__btn]", function () {
     //remove from medicationArr
     const indexToRemove = [...rowID.matchAll(/\d/g)].join("");
     const numberIndexToRemove = parseInt(indexToRemove) - 1;
-        //remove from medication alery selector To implement
-        
-        //$(`#${medicationArr[numberIndexToRemove].newMedicine} /${medicationArr[numberIndexToRemove].newQuantity} ${medicationArr[numberIndexToRemove].newDose}`).remove();
     medicationArr.splice(numberIndexToRemove, 1);
+
+        //remove from medication alery selector To implement
+        const optionRemoveID = $('#medication_selector').children()[numberIndexToRemove].id;
+        //bug cannot remove existing
+        $(`#${optionRemoveID}`).remove();
+        
+   
 
   }
 });
