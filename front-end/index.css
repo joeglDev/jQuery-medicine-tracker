@@ -58,3 +58,12 @@ body {
         flex-direction: column;
     }
 }
+
+/* Alerts */
+
+.medicines__alerts {
+    background-color: rgb(150, 45, 225);
+    color: white;
+    margin-top: 1rem;
+    padding: 0.5rem;
+}

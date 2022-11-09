@@ -7,7 +7,22 @@ $(() => {
   $("#included__medicines__list").load("./components/medicines_list.html");
 });
 
+$(() => {
+  $("#alerts__list").load("./components/medicines_alerts.html");
+});
+
 //medicines__list code
+
+//note this need fixing to accept only valid types
+interface medicationArr {
+  newMedicine : string | number |undefined | string[];
+  newQuantity : string | number |undefined | string[];
+  newDose : string | number |undefined | string[];
+};
+
+interface medicationsData extends Array<medicationArr>{}
+
+const medicationArr : medicationArr[] = [];
 let count = 0;
 
 //add new table row
@@ -18,6 +33,9 @@ $(document).on("click", "#new_medicine_form_button", (e) => {
   const newQuantity = $("#quantity").val();
   const newDose = $("#dose").val();
 
+  //pipulate array
+  medicationArr.push({newMedicine : newMedicine, newQuantity: newQuantity, newDose : newDose})
+console.log(medicationArr)
   //generate unique row ids
   count++;
 
@@ -28,17 +46,9 @@ $(document).on("click", "#new_medicine_form_button", (e) => {
 
 //remove table row
 //note -> did not use ES6 arrow func as could not use this keyword to grab button id
-$(document).on(
-  "click",
-  "[id*=__delete__btn]",
-  function () {
-    const rowID = $(this).parent().parent().attr("id");
-    if (rowID) {
-      $(`#${rowID}`).remove();
-    }
+$(document).on("click", "[id*=__delete__btn]", function () {
+  const rowID = $(this).parent().parent().attr("id");
+  if (rowID) {
+    $(`#${rowID}`).remove();
   }
-
-  //get id of clicked
-  //id of parent
-  //remove parent
-);
+});
