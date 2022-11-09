@@ -45,10 +45,6 @@ body {
     padding: 0;
 }
 
-.medicines__table__row :hover {
-    background-color: rgb(71, 117, 242);
-}
-
 #new_medicine_form {
     display: flex;
     margin-left: 20%;
