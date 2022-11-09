@@ -42,9 +42,10 @@ $(document).on("click", "#new_medicine_form_button", (e) => {
 
   //add new result to alert selector
   const selectorValue = `${newMedicine} /${newQuantity} ${newDose}`;
-  const optionID = `${newMedicine}${newQuantity}${newDose}`
-  $("#medication_selector").append(`<option id="${optionID}" value="${selectorValue}">${selectorValue}</option>`)
-  
+  const optionID = `${newMedicine}${newQuantity}${newDose}`;
+  $("#medication_selector").append(
+    `<option id="${optionID}" value="${selectorValue}">${selectorValue}</option>`
+  );
 
   //generate unique row ids
   count++;
@@ -66,15 +67,36 @@ $(document).on("click", "[id*=__delete__btn]", function () {
     const numberIndexToRemove = parseInt(indexToRemove) - 1;
     medicationArr.splice(numberIndexToRemove, 1);
 
-        //remove from medication alery selector To implement
-        const optionRemoveID = $('#medication_selector').children()[numberIndexToRemove].id;
-        //bug cannot remove existing
-        $(`#${optionRemoveID}`).remove();
-        
-   
-
+    //remove from medication alery selector To implement
+    const optionRemoveID = $("#medication_selector").children()[
+      numberIndexToRemove
+    ].id;
+    //bug cannot remove existing
+    $(`#${optionRemoveID}`).remove();
   }
 });
 
 //medication alerts
+const alertArr = [];
+let alertCount = 0;
+$(document).on("click", "#medication__alerts__form__button", (e) => {
+  e.preventDefault();
+  const alertMedication = $("#medication_selector").val();
+  const alertTime = $("#alert__time__input").val();
+  const alertRepeats = $("#alert__repeats__selector").val();
 
+  //alert in arr
+  const alertArrObj = {medication: alertMedication, time: alertTime, repeats: alertRepeats};
+  alertArr.push(alertArrObj);
+  //active alerts in table
+
+ 
+  //generate unique row ids
+  alertCount++;
+
+  $("#medicines__alert__table > tbody:first").append(
+    `<tr class="medicines__table__row" id="${count}__table__row" ><td>${alertMedication}</td><td>${alertTime}</td><td>${alertRepeats}</td><td><button id="${alertCount}__alerts__delete__btn" class="delete__btn">Remove</button></td></tr>`
+  );
+
+   //alert on time
+});
